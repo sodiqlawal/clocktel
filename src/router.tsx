@@ -1,18 +1,18 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { RFValue } from 'react-native-responsive-fontsize';
+import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
 //@ts-ignore
-import { NeuButton } from "react-native-neu-element";
-import BottomNavigator from "./navigator";
-import { GLOBAL_HEADER_STYLE } from "./constants";
-import { useAppTheme } from "./theme";
-import { Entypo } from "@expo/vector-icons";
-import { RFValue } from "react-native-responsive-fontsize";
+import { NeuButton } from 'react-native-neu-element';
+import BottomNavigator from './navigator';
+import { GLOBAL_HEADER_STYLE } from './constants';
+import { useAppTheme } from './theme';
 
 const RootStack = createStackNavigator();
 
 export default function AppNavigator() {
-  const { fonts, colors } = useAppTheme();
+  const { colors } = useAppTheme();
 
   return (
     <NavigationContainer>
@@ -20,14 +20,36 @@ export default function AppNavigator() {
         screenOptions={{
           headerTitle: () => null,
           headerLeft: () => (
-            <NeuButton color="#eef2f9" width={30} height={30} borderRadius={30}>
-              <Entypo name="plus" size={RFValue(20)} color={colors.WHITE} />
+            <NeuButton
+              color={colors.PRIMARY}
+              width={RFValue(40)}
+              height={RFValue(40)}
+              borderRadius={RFValue(40)}
+            >
+              <Entypo name="plus" size={RFValue(25)} color={colors.SECONDARY} />
             </NeuButton>
           ),
+          headerLeftContainerStyle: { paddingLeft: 20, paddingTop: 5 },
+          headerRight: () => (
+            <NeuButton
+              concave
+              color={colors.PRIMARY}
+              width={RFValue(40)}
+              height={RFValue(40)}
+              borderRadius={RFValue(40)}
+            >
+              <MaterialCommunityIcons
+                name="pencil"
+                size={RFValue(22)}
+                color={colors.SECONDARY}
+              />
+            </NeuButton>
+          ),
+          headerRightContainerStyle: { paddingRight: 20, paddingTop: 5 },
           headerStyle: {
             ...GLOBAL_HEADER_STYLE,
-            backgroundColor: colors.WHITE,
-          },
+            backgroundColor: colors.PRIMARY
+          }
         }}
       >
         <RootStack.Screen name="ClockScreen" component={BottomNavigator} />
