@@ -13,6 +13,15 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"]
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "package": "com.josemak25.ClockTel"
+    },
+    "ios": {
+      "bundleIdentifier": "com.ClockTel"
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }
