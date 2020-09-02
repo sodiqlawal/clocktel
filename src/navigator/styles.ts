@@ -7,14 +7,18 @@ export const IconContainer = styled.View`
   height: ${RFValue(100)}px;
   justify-content: center;
   align-items: center;
-  background-color: ${({ theme }) => theme.colors.WHITE};
 `;
 
 export const Label = styled.Text`
   font-size: ${({ theme }) => theme.fonts.LARGE_SIZE - 2}px;
-  font-family: ${({ theme }) => theme.fonts.AILERON_REGULAR};
+  font-family: ${({ theme }) => theme.fonts.AILERON_SEMI_BOLD};
   color: ${({ theme }) => theme.colors.PRIMARY_TEXT};
   padding-top: 10px;
   text-align: center;
   text-transform: uppercase;
+`;
+
+export const Image = styled.Image`
+  width: ${RFValue(20)}px;
+  height: ${RFValue(20)}px;
 `;

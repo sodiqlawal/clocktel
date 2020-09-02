@@ -1,13 +1,11 @@
 import React from 'react';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import ClockIcon from '../../assets/icons/clockIcon';
-import ListIcon from '../../assets/icons/listIcon';
-import SettingsIcon from '../../assets/icons/settingsIcon';
 import { useAppTheme } from '../theme';
+import APP_ICONS from '../../assets/icons';
 import Screens from '../screens';
 
 // IMPORT FOR ALL CUSTOM STYLES
-import { IconContainer, Label } from './styles';
+import { IconContainer, Label, Image } from './styles';
 
 export type TabBarIconTypes = { color: string };
 
@@ -20,14 +18,14 @@ export default function BottomNavigator() {
     <BottomTab.Navigator
       activeColor={colors.PRIMARY_TEXT}
       inactiveColor={colors.SECONDARY_TEXT}
-      barStyle={{ 
-        backgroundColor: colors.WHITE,
+      barStyle={{
+        backgroundColor: colors.PRIMARY,
         borderTopWidth: 0,
         shadowOpacity: 0,
         shadowOffset: { height: 0, width: 0 },
         shadowRadius: 0,
         elevation: 0
-       }}
+      }}
       initialRouteName="ClockScreen"
       labeled={false}
     >
@@ -35,12 +33,16 @@ export default function BottomNavigator() {
         name="ClockScreen"
         component={Screens.ClockScreen}
         options={{
-          tabBarIcon: ({ color }: TabBarIconTypes) => (
+          tabBarIcon: ({ color, focused }) => (
             <IconContainer>
-              <ClockIcon fillColor={color} />
-              <Label style={{ color }}>
-                clock
-              </Label>
+              <Image
+                resizeMode="contain"
+                source={
+                  focused ? APP_ICONS.alarm_active : APP_ICONS.alarm_inactive
+                }
+                style={{ tintColor: colors.ICON_TINT_COLOR }}
+              />
+              <Label style={{ color }}>clock</Label>
             </IconContainer>
           )
         }}
@@ -50,12 +52,16 @@ export default function BottomNavigator() {
         name="ListScreen"
         component={Screens.ListScreen}
         options={{
-          tabBarIcon: ({ color }: TabBarIconTypes) => (
+          tabBarIcon: ({ color, focused }) => (
             <IconContainer>
-              <ListIcon fillColor={color} />
-              <Label style={{ color }}>
-                list
-              </Label>
+              <Image
+                resizeMode="contain"
+                source={
+                  focused ? APP_ICONS.list_active : APP_ICONS.list_inactive
+                }
+                style={{ tintColor: colors.ICON_TINT_COLOR }}
+              />
+              <Label style={{ color }}>list</Label>
             </IconContainer>
           )
         }}
@@ -65,12 +71,18 @@ export default function BottomNavigator() {
         name="SettingScreen"
         component={Screens.SettingScreen}
         options={{
-          tabBarIcon: ({ color }: TabBarIconTypes) => (
+          tabBarIcon: ({ color, focused }) => (
             <IconContainer>
-              <SettingsIcon fillColor={color} />
-              <Label style={{ color }}>
-                settings
-              </Label>
+              <Image
+                resizeMode="contain"
+                source={
+                  focused
+                    ? APP_ICONS.settings_active
+                    : APP_ICONS.settings_inactive
+                }
+                style={{ tintColor: colors.ICON_TINT_COLOR }}
+              />
+              <Label style={{ color }}>settings</Label>
             </IconContainer>
           )
         }}
