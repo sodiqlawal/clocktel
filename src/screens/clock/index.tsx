@@ -1,23 +1,31 @@
 import React from 'react';
+import { StatusBar } from 'expo-status-bar';
+import { useAppTheme } from '../../theme';
+import { useStore } from '../../store';
+import getClockStyles from '../../utils/getClockStyles';
 import { NavigationInterface } from '../types';
-import { Button } from 'react-native-paper';
+
+// DEFINE SCREEN PROP TYPES
+interface ScreenProp extends NavigationInterface {}
 
 // IMPORT FOR ALL CUSTOM STYLES
 import { Container } from './styles';
 
 // DEFINE SCREEN PROP TYPES
-interface ScreenProp extends NavigationInterface {}
+interface ScreenProp {}
 
 export default function ClockScreen(props: ScreenProp) {
+  const { colors } = useAppTheme();
+
+  const { dlsState } = useStore();
+
   return (
     <Container>
-      <Button
-        icon="camera"
-        mode="contained"
-        onPress={() => console.log('Pressed')}
-      >
-        Clock Screen
-      </Button>
+      <StatusBar
+        translucent
+        animated
+        style={dlsState.status ? 'light' : 'dark'}
+      />
     </Container>
   );
 }
