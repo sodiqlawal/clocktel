@@ -4,6 +4,7 @@ import { useAppTheme } from '../../theme';
 import { useStore } from '../../store';
 import getClockStyles from '../../utils/getClockStyles';
 import { NavigationInterface } from '../types';
+import ClockSlide from './widgets/clockSlide';
 
 // DEFINE SCREEN PROP TYPES
 interface ScreenProp extends NavigationInterface {}
@@ -26,6 +27,7 @@ export default function ClockScreen(props: ScreenProp) {
         animated
         style={dlsState.status ? 'light' : 'dark'}
       />
+      <ClockSlide />
     </Container>
   );
 }

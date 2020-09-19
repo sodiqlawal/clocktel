@@ -3,7 +3,8 @@ import { RFValue } from 'react-native-responsive-fontsize';
 //@ts-ignore
 import { Title, Subheading } from 'react-native-paper';
 import { useAppTheme } from '../../../../theme';
-import { TimeZoneInterface } from '../../../../store/timeZone/types';
+// import { TimeZoneInterface } from '../../../../store/timeZone/types';
+import { TimeZoneInterface } from '../../../../store/timezone/types';
 import getLocaleTime from '../../../../utils/getLocaleTime';
 
 // IMPORT FOR ALL CUSTOM STYLES
