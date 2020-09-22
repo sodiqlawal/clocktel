@@ -26,7 +26,7 @@ export type TimeZoneInitialState = {
 export type TimeZoneInterface = {
   abbreviation: string;
   client_ip: string;
-  datetime: Date;
+  datetime: Date | string;
   day_of_week: number;
   day_of_year: number;
   dst: boolean;
@@ -36,7 +36,7 @@ export type TimeZoneInterface = {
   raw_offset: number;
   timezone: string;
   unixtime: number;
-  utc_datetime: Date;
+  utc_datetime: Date | string;
   utc_offset: string;
   week_number: number;
 };
