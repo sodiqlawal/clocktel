@@ -5,21 +5,12 @@ import { Title, Subheading } from 'react-native-paper';
 import { useAppTheme } from '../../../../theme';
 import { TimeZoneInterface } from '../../../../store/timezone/types';
 import getLocaleTime from '../../../../utils/getLocaleTime';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
 
 // IMPORT FOR ALL CUSTOM STYLES
 import { ClockDigits } from './styles';
-import {
-  Container,
-  ClockHands,
-  ClockHandMover,
-  ClockHandsHolder,
-  HourClockHand,
-  MinuteClockHand,
-  SecondClockHand
-} from '../../styles';
 
-import { View, Text, Animated , ScrollView, Dimensions} from 'react-native';
+
+import { Dimensions } from 'react-native';
 
 const clockHandImage = require('../../../../../assets/images/clock_hands.png');
 
@@ -34,60 +25,10 @@ export default function ClockSlide(props: ClockSlideProp) {
 
   const time = getLocaleTime({ timezone, datetime: new Date(datetime) });
 
-  const onSwipeLeft = () => {
-    return alert('Swipe left');
-  };
-
-  const LeftAction = (progress: any, dragX: any) => {
-    const scale = dragX.interpolate({
-      inputRange: [0, 100],
-      outputRange: [0, 1],
-      extrapolate: 'clamp'
-    });
-    return (
-      <View>
-        <Animated.Text style={[{ transform: [{ scale }] }]}>
-          Swipe left
-        </Animated.Text>
-      </View>
-    );
-  };
-
-  const rightAction = (progress: any, dragX: any) => {
-    const scale = dragX.interpolate({
-      inputRange: [-100, 0],
-      outputRange: [1, 0],
-      extrapolate: 'clamp'
-    });
-    return (
-      <View>
-        <Animated.Text style={[{ transform: [{ scale }] }]}>
-          Delete
-        </Animated.Text>
-      </View>
-    );
-  };
-
   let screenWidth = Dimensions.get('window').width;
-  let screenHeight = Dimensions.get('window').height;
 
   return (
-    <ScrollView horizontal={true}>
-    {/* <Swipeable
-      renderLeftActions={LeftAction}
-      onSwipeableLeftOpen={onSwipeLeft}
-      renderRightActions={rightAction}
-    > */}
-      <ClockDigits style={{width:screenWidth}}>
-        <ClockHands source={clockHandImage}>
-          <Container>
-            <ClockHandsHolder />
-            <ClockHandMover />
-            <HourClockHand />
-            <MinuteClockHand />
-            <SecondClockHand />
-          </Container>
-        </ClockHands>
+      <ClockDigits style={{ width: screenWidth }}>
         <Subheading
           style={{
             fontFamily: fonts.AILERON_SEMI_BOLD,
@@ -124,7 +65,5 @@ export default function ClockSlide(props: ClockSlideProp) {
           {continent}
         </Subheading>
       </ClockDigits>
-    {/* </Swipeable> */}
-    </ScrollView>
   );
 }

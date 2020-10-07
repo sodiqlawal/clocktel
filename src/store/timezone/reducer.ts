@@ -1,10 +1,11 @@
 import { TIME_ZONE_TYPES, TimeZoneInitialState, TimeZoneAction } from './types';
 import dummyTime from '../../libs/dummyTime.json';
+import {TimeZones} from '../../constants/timeZone'
 
 export const timeZoneInitialState = {
   isLoading: false,
   error: null,
-  data: [...(dummyTime.data as any)]
+  data: [...(TimeZones as any)]
 } as TimeZoneInitialState;
 
 export default function timeZoneReducer(

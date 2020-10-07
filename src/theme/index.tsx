@@ -12,6 +12,7 @@ const ThemeProvider: FunctionComponent = ({ children }) => {
   const { DARK_MODE_COLORS, LIGHT_MODE_COLORS, fonts } = styledComponentTheme;
   const colors = status ? DARK_MODE_COLORS : LIGHT_MODE_COLORS;
 
+
   return (
     <PaperProvider
       theme={paperTheme}

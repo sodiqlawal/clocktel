@@ -1,6 +1,6 @@
 import { DLS_ACTION_TYPES, DLSInitialState, DLSAction } from "./types";
 
-export const dlsInitialState = { status: false } as DLSInitialState;
+export const dlsInitialState = { status: true } as DLSInitialState;
 
 export default function DLSReducer(state = dlsInitialState, action: DLSAction) {
   switch (action.type) {
